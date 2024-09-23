@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 
 app = Flask(__name__)
 
@@ -12,7 +12,11 @@ def webhook():
         if "challenge" in data:
             print(f"Webhook received: {data}")
             # Responder al webhook con el desafío
-            return jsonify({'challenge': data['challenge']}), 200
+            response = make_response(jsonify({'challenge': data['challenge']},200))
+            response.headers['ngrok-skip-browser-warning'] = 'true'
+            return response
+
+            # return jsonify({'challenge': data['challenge']}), 200
         else:
             return jsonify({'error': 'No se encontró el campo challenge'}), 400
     else:
