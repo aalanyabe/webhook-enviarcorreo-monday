@@ -122,8 +122,6 @@ def webhook():
             # Aquí puedes extraer el ID del ítem, el ID del tablero y otros valores necesarios del payload
             item_id = data.get("event",()).get("pulseId")
             board_id = data.get("event",()).get("boardId")
-            column_id = data.get("event",()).get("columnValues").get(f'{column_id}') 
-            new_value = new_value
             
             # # Llama a la función para actualizar la columna
             update_response = update_email_column_value(item_id, board_id, column_id, new_value)
