@@ -66,7 +66,11 @@
 
 # if __name__ == '__main__':
 #     app.run()
-
+#  Ruta que ejecuta la función cuando se hace una solicitud GET
+# @app.route('/update-email', methods=['GET'])
+# def update_email_route():
+#     result = update_email_column_value()
+#     return jsonify({"status": "Email updated", "result": result})
 
 from flask import Flask, jsonify,abort,request
 import requests
@@ -96,13 +100,11 @@ def update_email_column_value(item_id,board_id,column_id,new_value):
     print(response.text)
     return response.text
 
-
-#  Ruta que ejecuta la función cuando se hace una solicitud GET
-# @app.route('/update-email', methods=['GET'])
-# def update_email_route():
-#     result = update_email_column_value()
-#     return jsonify({"status": "Email updated", "result": result})
-
+def get_tienda_email():
+    board_id = 5794268071
+    url = "https://api.monday.com/v2"
+    i = 89
+    payload = json.dumps({"query": f'{{ boards(ids: {i}) {{ name id description items_page (limit:500){{cursor items{{name url column_values{{  id text type ... on DateValue {{time date}}}}}}}} } }}'})
 
 @app.route('/webhook', methods = ['POST'])
 def webhook():
