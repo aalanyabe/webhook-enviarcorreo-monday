@@ -1,4 +1,3 @@
-.venv
 .env
-.
+.env_production
 __pycache__
