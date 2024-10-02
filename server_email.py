@@ -1,15 +1,26 @@
 from flask import Flask, jsonify,abort,request
+from dotenv import load_dotenv
+import os
 import requests
 import json
 
 app = Flask(__name__)
 
-ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjE4MDk4NjgyNSwiYWFpIjoxMSwidWlkIjozMDQ2ODAyNywiaWFkIjoiMjAyMi0wOS0xNFQyMjoxODoxOS4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTE3MTIwMjYsInJnbiI6InVzZTEifQ.TU91f8lcu2mspQDy-BHlOuXzgZt3RQTuGMOp6GDh4N8"
+load_dotenv()
 
-base_store_board_id = 6750853855
-target_board_email_column_id= 'correo_electr_nico__1'
-base_borad_email_column_id = 'correo_electr_nico__1'
-foreign_email_colum_id_target_board = 'texto4__1'
+# ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjE4MDk4NjgyNSwiYWFpIjoxMSwidWlkIjozMDQ2ODAyNywiaWFkIjoiMjAyMi0wOS0xNFQyMjoxODoxOS4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTE3MTIwMjYsInJnbiI6InVzZTEifQ.TU91f8lcu2mspQDy-BHlOuXzgZt3RQTuGMOp6GDh4N8"
+# base_store_board_id = 6750853855
+# target_board_email_column_id= 'correo_electr_nico__1'
+# base_borad_email_column_id = 'correo_electr_nico__1'
+# foreign_email_colum_id_target_board = 'texto4__1'
+
+ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
+base_store_board_id = os.getenv("BASE_STORE_BOARD_ID")
+target_board_email_column_id= os.getenv("TARGET_BOARD_EMAIL_COLUMN_ID")
+base_board_email_column_id = os.getenv("BASE_BOARD_EMAIL_COLUMN_ID")
+foreign_email_colum_id_target_board = os.getenv("FOREIGN_EMAIL_COLUMN_ID_TARGET_BOARD")
+
+
 
 def update_email_column_value(item_id,board_id,column_id,new_value):
     url = "https://api.monday.com/v2?="
@@ -44,7 +55,7 @@ def get_store_email(board_id,store_name):
     for item in data['data']['boards'][0]['items_page']['items']:
         if item['name'] == store_name:
             for column in item['column_values']:
-                if column['id'] == base_borad_email_column_id:
+                if column['id'] == base_board_email_column_id:
                     return f"correo@gmail.com {column['text']}"
 
 
