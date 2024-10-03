@@ -6,7 +6,7 @@ import json
 
 app = Flask(__name__)
 
-load_dotenv()
+load_dotenv(".env.production")
 
 # ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjE4MDk4NjgyNSwiYWFpIjoxMSwidWlkIjozMDQ2ODAyNywiaWFkIjoiMjAyMi0wOS0xNFQyMjoxODoxOS4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTE3MTIwMjYsInJnbiI6InVzZTEifQ.TU91f8lcu2mspQDy-BHlOuXzgZt3RQTuGMOp6GDh4N8"
 # base_store_board_id = 6750853855
@@ -19,6 +19,7 @@ base_store_board_id = os.getenv("BASE_STORE_BOARD_ID")
 target_board_email_column_id= os.getenv("TARGET_BOARD_EMAIL_COLUMN_ID")
 base_board_email_column_id = os.getenv("BASE_BOARD_EMAIL_COLUMN_ID")
 foreign_email_colum_id_target_board = os.getenv("FOREIGN_EMAIL_COLUMN_ID_TARGET_BOARD")
+print(f'clave externa {foreign_email_colum_id_target_board}')
 
 
 
