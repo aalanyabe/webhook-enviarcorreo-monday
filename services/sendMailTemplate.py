@@ -40,8 +40,8 @@ def EnviarMail(cliente, idTicket, subjectTicket, email,columnIdCal,columnIdComen
     
     # Construir el mensaje
     msg = EmailMessage()
-    msg['Subject'] = f'Ticket Id {idTicket} Atendido — ¡Evalúa tu experiencia Nuev!'
-    msg['From'] = f"Area de TI <{FROM_EMAIL}>"
+    msg['Subject'] = f'Ticket Id {idTicket} Atendido — ¡Evalúa tu experiencia!'
+    msg['From'] = f"Sifrah <{FROM_EMAIL}>"
     msg['To'] = email
     msg.set_content("Este correo contiene contenido HTML.")
     msg.add_alternative(html_inline, subtype='html')
