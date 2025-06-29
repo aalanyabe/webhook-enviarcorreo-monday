@@ -1,11 +1,3 @@
-Server_email es para que cuando se cree un elemento en monday, se actualice automaticamente el correo en base al tablero de directo de tiendas, al crear debe estar con nombre de tienda para hacer match con el tablero de directorio de tiendas
-
-
-cuando el estado cambie a cerrado, se debe enviar email 
-id ticket
-tienda
-correo
-asunto
-
-
+este programa permite recibir webhook de monday y responder con el envio de correo 
+Es decir desde monday, puede conectar cuando un estado cambia a algo enviar webjhook Items
 
