@@ -20,6 +20,8 @@ target_board_email_column_id= os.getenv("TARGET_BOARD_EMAIL_COLUMN_ID")
 base_board_email_column_id = os.getenv("BASE_BOARD_EMAIL_COLUMN_ID")
 foreign_email_colum_id_target_board = os.getenv("FOREIGN_EMAIL_COLUMN_ID_TARGET_BOARD")
 print(f'clave externa {foreign_email_colum_id_target_board}')
+print(f'clave EMAIL TIENDA BASE {base_board_email_column_id}')
+
 
 
 
@@ -72,13 +74,13 @@ def webhook():
             }
             return jsonify(response),200
         else:
-            print(f"Received data: {data}")
+            print(f"Received data 2: {data}")
             # return jsonify(request.json),200
-        
+                    
             # Aquí puedes extraer el ID del ítem, el ID del tablero y otros valores necesarios del payload
             item_id = data.get("event",()).get("pulseId")
             board_id = data.get("event",()).get("boardId")
-            store_name = data.get("event",()).get("columnValues",{}).get(foreign_email_colum_id_target_board,{}).get("chosenValues",[])[0].get("name")
+            store_name = data.get("event",()).get("columnValues",{}).get(foreign_email_colum_id_target_board,{}).get("chosenValues",[])[0].get("name",{})
 
             new_value = get_store_email(base_store_board_id,store_name)
             

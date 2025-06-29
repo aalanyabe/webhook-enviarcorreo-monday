@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta de Atención</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Reset mínimo y tipografía */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif;
+            background: #7e7f7fb4;
+        }
+
+        .container {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main {
+            background: #fff;
+            max-width: 600px;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .fondocorreo {
+            background-color: #3738381c;
+            justify-items: center;
+
+        }
+
+        .divlogo {
+            text-align: center;
+            background: #f52bd3;
+            padding: 20px;
+            max-width: 600px;
+            align-items: center;
+        }
+
+        .divcontexto {
+            text-align: center;
+            background: #ffffff;
+            padding: 20px;
+            max-width: 600px;
+            align-items: center;
+        }
+
+        .divfirma {
+            text-align: center;
+            background: #1f1d1d;
+            padding: 20px;
+            max-width: 600px;
+            align-items: center;
+            color: #fff;
+
+        }
+
+        .divlogo img {
+            max-width: 180px;
+
+        }
+
+
+        .divlogo p {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 300;
+            margin: 0;
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px 30px;
+        }
+
+        .content p {
+            margin-bottom: 16px;
+            line-height: 1.5;
+
+        }
+
+        .content h3 {
+            margin: 20px 0 10px;
+            font-size: 18px;
+            color: #004080;
+        }
+
+        .tablaestrella {
+            margin: 0 auto 20px;
+            border-collapse: collapse;
+        }
+
+        .tablaestrella td {
+            padding: 0 3px;
+            text-align: center;
+        }
+
+        .tablaestrella img {
+            width: 55px;
+            border: none;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .tablaestrella span {
+            display: block;
+            margin-top: 6px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .footer-text {
+            margin-top: 20px;
+            font-size: 14px;
+            text-align: center;
+            color: #666;
+        }
+
+        .footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+        }
+
+        .footer strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        table {
+            border-spacing: 0;
+            text-align: center;
+            cursor: pointer
+        }
+
+        td {
+            padding: 0
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="fondocorreo">
+        <div>
+            <div class="divlogo">
+                <div>
+                    <img src="https://res.cloudinary.com/diqstznvt/image/upload/v1750808963/logo_transparente_ijvtnssifrah_u7mdic.png"
+                        alt="SIFRAH Logo" class="logoimg">
+                    <p>Conectamos con nuestros clientes
+                    </p>
+                </div>
+            </div>
+            <div class="divcontexto">
+                <p>Hola, <strong>{{cliente}}</strong></p>
+                <p>
+                    Tu ticket <strong>{{idTicket}}</strong> <em>{{subjectTicket}}</em> ha sido <strong>cerrado</strong>
+                    y se
+                    considera
+                    resuelto.
+                </p>
+
+                <h3 class="pregunta">¿Cómo calificarías la atención recibida?</h3>
+
+                <title>Calificación con Estrellas</title>
+
+                <table class="tablaestrella">
+                    <tr>
+                        <!-- Estrella 1 -->
+                        <td>
+                            <a
+                                href="https://encuestatiendasifrah.netlify.app/?column_idComm=texto_largo_mkkfmmk2&column_idClasi=clasificaci_n_mkkfsvhp&idBoard=6632013315&idTicket={{idTicket}}&score=1">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <img src="https://res.cloudinary.com/dswfd3z0p/image/upload/v1733085535/star-4-4_sarjvp_dvadzj.jpg"
+                                                alt="Muy Malo">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Muy
+                                                Malo</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </td>
+                        <!-- Estrella 2 -->
+                        <td>
+                            <a
+                                href="https://encuestatiendasifrah.netlify.app/?column_idComm=texto_largo_mkkfmmk2&column_idClasi=clasificaci_n_mkkfsvhp&idBoard=6632013315&idTicket={{idTicket}}&score=2">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <img src="https://res.cloudinary.com/dswfd3z0p/image/upload/v1733085535/star-4-4_sarjvp_dvadzj.jpg"
+                                                alt="Malo">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Malo</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </td>
+                        <!-- Estrella 3 -->
+                        <td>
+                            <a
+                                href="https://encuestatiendasifrah.netlify.app/?column_idComm=texto_largo_mkkfmmk2&column_idClasi=clasificaci_n_mkkfsvhp&idBoard=6632013315&idTicket={{idTicket}}&score=3">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <img src="https://res.cloudinary.com/dswfd3z0p/image/upload/v1733085535/star-4-4_sarjvp_dvadzj.jpg"
+                                                alt="Malo">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Malo</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </td>
+                        <!-- Estrella 4 -->
+                        <td>
+                            <a
+                                href="https://encuestatiendasifrah.netlify.app/?column_idComm=texto_largo_mkkfmmk2&column_idClasi=clasificaci_n_mkkfsvhp&idBoard=6632013315&idTicket={{idTicket}}&score=4">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <img src="https://res.cloudinary.com/dswfd3z0p/image/upload/v1733085535/star-4-4_sarjvp_dvadzj.jpg"
+                                                alt="Malo">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Malo</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </td>
+                        <!-- Estrella 5 -->
+                        <td>
+                            <a
+                                href="https://encuestatiendasifrah.netlify.app/?column_idComm=texto_largo_mkkfmmk2&column_idClasi=clasificaci_n_mkkfsvhp&idBoard=6632013315&idTicket={{idTicket}}&score=5">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <img src="https://res.cloudinary.com/dswfd3z0p/image/upload/v1733085535/star-4-4_sarjvp_dvadzj.jpg"
+                                                alt="Malo">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span>Malo</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <p>
+                    Apreciamos tus comentarios. Haz clic en la estrella que mejor refleje tu experiencia para enviar tu
+                    respuesta.
+                </p>
+            </div>
+            <div class="divfirma">
+                <strong>Área de Tecnología de la Información</strong><br>
+                SIFRAH
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
+
+
+
+<table role="presentation" style="text-align: center; vertical-align: top;" cellpadding="0";
+                                cellspacing="0"
+                                style="border-collapse:collapse; margin:0 auto 20px">
+                                <tr>
+                                    {% for i,label in stars.items() %}
+                                    <td
+                                        style="padding:0 4px; text-align:center; ">
+                                        <a href="{{ url }}&id={{idTicket}}&score={{i}}"
+                                            style="text-decoration:none; display:block;">
+                                            <img src="https://res.cloudinary.com/dswfd3z0p/image/upload/v1733085535/star-4-4_sarjvp_dvadzj.jpg"
+                                                alt="{{label}}" width="55"
+                                                style="display:block; margin:0 auto; border:0;">
+                                            <span style="display:block; margin-top:6px; font-size:13px; color:#555;">
+                                                {{label}}
+                                            </span>
+                                        </a>
+                                    </td>
+                                    {% endfor %}
+                                </tr>
+                            </table>

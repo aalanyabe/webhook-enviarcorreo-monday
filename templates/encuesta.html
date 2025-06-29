@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta de Atención</title>
+</head>
+
+<body style="margin:0; padding:0; background-color:#ffffff;">
+
+    <!-- Contenedor principal -->
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+        style="background-color:#ffffff; padding:20px;align-items: center; justify-content: center;justify-items: center;">
+        <tr>
+            <td
+                style="text-align: center; vertical-align: top;align-items: center; justify-content: center;justify-items: center;">
+
+                <!-- Tarjeta blanca -->
+                <table role="presentation" width="600" cellpadding="0" cellspacing="0"
+                    style="background-color:#ffffff; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1); overflow:hidden;">
+
+                    <!-- Encabezado con logo -->
+                    <tr>
+                        <td style="background-color:#f52bd3; text-align:center; padding:20px;">
+                            <img src="https://res.cloudinary.com/diqstznvt/image/upload/v1750808963/logo_transparente_ijvtnssifrah_u7mdic.png"
+                                alt="SIFRAH Logo" width="140" style="display:block; margin:0 auto 10px; border:0;">
+                            <p
+                                style="margin:0; color:#ffffff; font-family:'Lato',sans-serif; font-size:16px; font-weight:300;">
+                                Conectamos con nuestros clientes
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Cuerpo del mensaje -->
+                    <tr>
+                        <td
+                            style="padding:30px; text-align:center; font-family:'Lato',sans-serif; color:#333; vertical-align: top;border-spacing: 15px;border-collapse: collapse; margin: 0 auto;padding: 20px;align:center">
+
+                            <p style="margin:0 0 16px; font-size:15px; line-height:1.5;">
+                                Hola, <strong>{{cliente}}</strong>
+                            </p>
+                            <p style="margin:0 0 16px; font-size:15px; line-height:1.5;">
+                                Tu ticket <strong>#{{idTicket}}</strong>
+                                (<em>{{subjectTicket}}</em>) ha sido <strong>cerrado</strong> y se considera resuelto.
+                            </p>
+
+                            <h3 style="margin:20px 0 15px; font-size:18px; color:#302b2f;">
+                                ¿Cómo calificarías la atención recibida?
+                            </h3>
+
+                            <!-- Tabla de estrellas -->
+                            <!-- Tabla envoltorio para forzar centrado -->
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+                                style="border-collapse:collapse; margin:0; padding:0;">
+                                <tr>
+                                    <!-- Esta celda centra todo su contenido -->
+                                    <td style="text-align:center;">
+
+                                        <!-- Tu tabla de estrellas centrada -->
+                                        <table role="presentation" cellpadding="0" cellspacing="0"
+                                            style="border-collapse:collapse; margin:0 auto;">
+                                            <tr>
+                                                {% for i,label in stars.items() %}
+                                                <td style="padding:0 4px; vertical-align:top; text-align:center;">
+                                                    <a href="{{url}}?column_idComm={{columnIdComent}}&column_idClasi={{columnIdCal}}&idBoard={{idBoard}}&idTicket={{idTicket}}&score={{i}}"
+                                                        style="display:inline-block; text-decoration:none; text-align:center;">
+                                                        <img src="https://res.cloudinary.com/dswfd3z0p/image/upload/v1733085535/star-4-4_sarjvp_dvadzj.jpg"
+                                                            alt="{{label}}" width="55"
+                                                            style="display:block; margin:0 auto; border:0;">
+                                                        <span
+                                                            style="display:block; margin-top:6px; font-size:13px; color:#555;">
+                                                            {{label}}
+                                                        </span>
+                                                    </a>
+                                                </td>
+                                                {% endfor %}
+                                            </tr>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                            <p style="margin:0; font-size:14px; color:#666;">
+                                Apreciamos tus comentarios. Haz clic en la estrella que mejor refleje tu experiencia.
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Pie de firma -->
+                    <tr>
+                        <td
+                            style="background-color:#1f1d1d; text-align:center; padding:20px; color:#ffffff; font-family:'Lato',sans-serif; font-size:14px;">
+                            <strong style="display:block; margin-bottom:4px;">{{area}}</strong>
+                            SIFRAH
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
