@@ -51,6 +51,6 @@ def get_data_item(item_id):
 
     response = requests.request("POST", url, headers=headers, data=payload)
 
-    return response.json
+    return response.text
 
 

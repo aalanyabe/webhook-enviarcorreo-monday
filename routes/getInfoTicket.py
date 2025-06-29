@@ -21,8 +21,8 @@ def webhook():
         try:
             # Carga configuración general
             BOARD_CONFIG  = load_board_config()
-            print(f'este es board config: {BOARD_CONFIG}')
-            print(f"Received data webhook: {data}")
+            # print(f'este es board config: {BOARD_CONFIG}')
+            # print(f"Received data webhook: {data}")
             # return jsonify(request.json),200
             id_board = data.get("event",()).get("boardId") #Este es del webHook
             
@@ -49,12 +49,12 @@ def webhook():
             
             # Obtiene datos del item desde Monday
             getDataItem = get_data_item(id_item)
-            print(f'getDataItem: {get_data_item}')
+            # print(f'getDataItem: {get_data_item}')
             getDataItemDict = json.loads(getDataItem)
             result = {}
             columns = getDataItemDict.get("data",{}).get("items",[])[0].get("column_values",[])
             subject = getDataItemDict.get("data",{}).get("items",[])[0].get("name")
-            print(f'valores columnas: {columns}')
+            # print(f'valores columnas: {columns}')
             result["subject"] = subject
             
             # Validación: ¿existen esos IDs en el item?
@@ -68,9 +68,9 @@ def webhook():
                 }), 400
                 
             for column in columns:
-                print(f'valor column: {column}')
-                print (f'el valor del usuario en en el FOR ES: {usuario_id}')
-                print (f'el valor del IDTICKE en en el FOR ES: {idTicket}')
+                # print(f'valor column: {column}')
+                # print (f'el valor del usuario en en el FOR ES: {usuario_id}')
+                # print (f'el valor del IDTICKE en en el FOR ES: {idTicket}')
                 if column.get("id")==usuario_id:
                     result["usuario"] = column["text"] 
                 elif column.get("id")==correo_id:
