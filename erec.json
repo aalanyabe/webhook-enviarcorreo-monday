@@ -1,5 +1,0 @@
-{'Received data 2': {{'event': {'app': 'monday', 'type': 'update_column_value', 'trigg3970762, 'isRetry': False, 'userId': 30468027, 'originalTriggerUuid': None, 'board
-9389329208, 'pulseName': 'FALLA DE AMVIENTA', 'columnId': 'estado4__1', 'columnTyp
-{'index': 1, 'text': 'Cerrado', 'style': {'color': '#00c875', 'border': '#00b461',: None}, 'previousValue': {'label': {'index': 2, 'text': 'Reabierto', 'style': {'cr'}, 'is_done': False}, 'post_id': None}, 'changedAt': 1750907656.5280445, 'isTopGbbb4c'}}
-
-{"hola":"hol"}

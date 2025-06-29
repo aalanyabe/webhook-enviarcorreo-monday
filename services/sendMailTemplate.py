@@ -8,6 +8,9 @@ from premailer import transform
 
 load_dotenv(".env.production")
 
+FROM_EMAIL = os.getenv("FROM_EMAIL")
+APP_PASSWORD = os.getenv("APP_PASSWORD")
+
 # Prepara Jinja
 env = Environment(loader=FileSystemLoader('templates'))
 template = env.get_template('encuesta.html')
@@ -30,7 +33,6 @@ def EnviarMail(cliente, idTicket, subjectTicket, email,columnIdCal,columnIdComen
         columnIdComent = columnIdComent,
         idBoard = idBoard,
         area = area
-        
         )
     
      # Convierte todos los estilos a inline CSS
@@ -39,8 +41,7 @@ def EnviarMail(cliente, idTicket, subjectTicket, email,columnIdCal,columnIdComen
     # Construir el mensaje
     msg = EmailMessage()
     msg['Subject'] = f'Ticket Id {idTicket} Atendido — ¡Evalúa tu experiencia!'
-    from_email = os.getenv('FROM_EMAIL')
-    msg['From'] = f"Area de TI <{from_email}>"
+    msg['From'] = f"Area de TI <{FROM_EMAIL}>"
     msg['To'] = email
     msg.set_content("Este correo contiene contenido HTML.")
     msg.add_alternative(html_inline, subtype='html')

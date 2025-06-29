@@ -1,70 +1,16 @@
-from flask import Flask, jsonify,abort,request
+from flask import jsonify,abort,request,Blueprint
 from dotenv import load_dotenv
-import os
-import requests
-import json
+import os, json
 
-from sendMailTemplate import EnviarMail
+from services.sendMailTemplate import EnviarMail
+from services.monday_api import get_data_item,load_board_config
 
-app = Flask(__name__)
+routes = Blueprint('routes', __name__)  # Crear blueprint
+
 
 load_dotenv(".env.production")
 
-ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
-BOARD_ID = os.getenv("BOARD_ID")
-COLUMN_ID = os.getenv("COLUMN_ID")
-
-
-def load_board_config():
-    url = "https://api.monday.com/v2?="
-    payload = json.dumps({
-        "query":f'query {{ boards(ids: {BOARD_ID}) {{ name id description items_page (limit:500) {{cursor items{{name url column_values{{  id text type ... on DateValue {{time date}}}}}}}}}}}}'
-    })
-    headers = {
-    'Authorization': ACCESS_TOKEN,
-    'Content-Type': 'application/json',
-    'API-version': '2023-10'
-    }
-    data = requests.request("POST", url, headers=headers, data=payload)
-    dataJson = data.json()
-    
-    config = {}
-    
-    for item in dataJson["data"]["boards"][0]["items_page"]["items"]:
-       vals = { cv["id"]: cv["text"] for cv in item["column_values"] }
-       print(f'vals: {vals} ')
-       config[vals["long_text_mks9arq7"]] ={
-           "col_comment": vals["long_text_mks9a1zs"],
-           "col_rating":  vals["long_text_mks93dwf"],
-           "area": vals["text_mks93aaq"],
-           "correo": vals["long_text_mks9tvzs"],
-           "usuario": vals["long_text_mks9bp9d"],
-           "itTicket":vals["long_text_mksbsedy"]
-       }
-    
-    # print("config: ",config)  
-    return config
-    
-
-def get_data_item(item_id):
-    url = "https://api.monday.com/v2?="
-    payload = json.dumps({
-        "query": f'query {{items (ids: {item_id}) {{name column_values {{id value text}}}}}}'
-    })
-    
-    headers = {
-    'Authorization': ACCESS_TOKEN,
-    'Content-Type': 'application/json',
-    'API-version': '2023-10'
-    }
-
-    response = requests.request("POST", url, headers=headers, data=payload)
-
-    print(response.text)
-    return response.text
-
-
-@app.route('/webhookTicketCerrado', methods = ['POST'])
+@routes.route('/webhookTicketCerrado', methods = ['POST'])
 def webhook():
     
     if request.method == 'POST':
@@ -154,10 +100,3 @@ def webhook():
                                     
     else:
         abort(400)
-
-if __name__ == '__main__':
-    # config = load_board_config()
-    # print(config)
-    app.run()
-    # get_data_item(item_id='7955959785')
-
